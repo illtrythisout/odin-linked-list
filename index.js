@@ -23,6 +23,7 @@ class LinkedList {
       }
       currentNode.next = node;
     }
+    this.tail = node;
 
     this.size++;
   }
