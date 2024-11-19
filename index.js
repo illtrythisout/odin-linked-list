@@ -26,10 +26,17 @@ class LinkedList {
 
     this.size++;
   }
-}
 
-// let li = new LinkedList();
-// li.append(1);
-// li.append(2);
-// li.append(3);
-// console.log(li);
+  prepend(value) {
+    const node = new Node(value);
+
+    if (!this.head) {
+      this.head = node;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+
+    this.size++;
+  }
+}
