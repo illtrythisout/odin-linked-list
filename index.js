@@ -69,4 +69,24 @@ class LinkedList {
 
     this.size--;
   }
+
+  contains(value) {
+    let currentNode = this.head;
+
+    // checks if head is value
+    if (currentNode.value === value) {
+      return true;
+    }
+
+    // loops through the rest of the list
+    do {
+      currentNode = currentNode.next;
+      if (currentNode.value === value) {
+        return true;
+      }
+    } while (currentNode.next);
+
+    // if no values are true, return false
+    return false;
+  }
 }
