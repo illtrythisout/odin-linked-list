@@ -148,16 +148,15 @@ class LinkedList {
     // checks if this.head needs to be updated
     if (index === 0) {
       this.head = node;
-    } else {
-      // loops to the node before the index
-      for (let i = 0; i < index - 1; i++) {
-        currentNode = currentNode.next;
-      }
-
-      // inserts node right after the node before the index
-      node.next = currentNode.next;
-      currentNode.next = node;
     }
+    // loops to the node before the index
+    for (let i = 0; i < index - 1; i++) {
+      currentNode = currentNode.next;
+    }
+
+    // inserts node right after the node before the index
+    node.next = currentNode.next;
+    currentNode.next = node;
 
     // checks if this.tail needs to be updated
     if (index === this.size) {
@@ -165,5 +164,28 @@ class LinkedList {
     }
 
     this.size++;
+  }
+
+  removeAt(index) {
+    let currentNode = this.head;
+
+    // checks if this.head needs to be updated
+    if (index === 0) {
+      this.head = currentNode.next;
+    }
+    // loops to the node before the index
+    for (let i = 0; i < index - 1; i++) {
+      currentNode = currentNode.next;
+    }
+
+    // removes node right after the node before the index
+    currentNode.next = currentNode.next.next;
+
+    // checks if this.tail needs to be updated
+    if (index === this.size - 1) {
+      this.tail = currentNode;
+    }
+
+    this.size--;
   }
 }
