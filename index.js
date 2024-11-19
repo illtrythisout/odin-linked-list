@@ -29,6 +29,8 @@ class LinkedList {
     this.tail = node;
 
     this.size++;
+
+    return value;
   }
 
   prepend(value) {
@@ -44,6 +46,8 @@ class LinkedList {
     }
 
     this.size++;
+
+    return value;
   }
 
   at(index) {
@@ -68,11 +72,16 @@ class LinkedList {
     while (currentNode.next.next) {
       currentNode = currentNode.next;
     }
+    // saves value of node to be removed for return
+    let returnValue = currentNode.next.value;
+
     currentNode.next = null;
 
     this.tail = currentNode;
 
     this.size--;
+
+    return returnValue;
   }
 
   contains(value) {
@@ -164,18 +173,31 @@ class LinkedList {
     }
 
     this.size++;
+
+    return value;
   }
 
   removeAt(index) {
     let currentNode = this.head;
+    let returnValue;
 
-    // checks if this.head needs to be updated
+    // saves value of node to be removed for return
     if (index === 0) {
+      returnValue = this.head.value;
+    }
+
+    if (index === 0) {
+      // checks if this.head needs to be updated
       this.head = currentNode.next;
     }
     // loops to the node before the index
     for (let i = 0; i < index - 1; i++) {
       currentNode = currentNode.next;
+    }
+
+    // saves value of node to be removed for return
+    if (index !== 0) {
+      returnValue = currentNode.next.value;
     }
 
     // removes node right after the node before the index
@@ -187,5 +209,7 @@ class LinkedList {
     }
 
     this.size--;
+
+    return returnValue;
   }
 }
