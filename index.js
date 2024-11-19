@@ -55,4 +55,18 @@ class LinkedList {
     }
     return currentNode;
   }
+
+  pop() {
+    let currentNode = this.head;
+
+    // sets currentNode to the second to last node in the linked list
+    while (currentNode.next.next) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = null;
+
+    this.tail = currentNode;
+
+    this.size--;
+  }
 }
