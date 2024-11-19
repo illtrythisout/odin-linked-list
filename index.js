@@ -139,4 +139,31 @@ class LinkedList {
 
     return string;
   }
+
+  insertAt(value, index) {
+    const node = new Node(value);
+
+    let currentNode = this.head;
+
+    // checks if this.head needs to be updated
+    if (index === 0) {
+      this.head = node;
+    } else {
+      // loops to the node before the index
+      for (let i = 0; i < index - 1; i++) {
+        currentNode = currentNode.next;
+      }
+
+      // inserts node right after the node before the index
+      node.next = currentNode.next;
+      currentNode.next = node;
+    }
+
+    // checks if this.tail needs to be updated
+    if (index === this.size) {
+      this.tail = node;
+    }
+
+    this.size++;
+  }
 }
