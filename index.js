@@ -57,6 +57,11 @@ class LinkedList {
   }
 
   pop() {
+    // checks list length
+    if (this.size === 0) {
+      return;
+    }
+
     let currentNode = this.head;
 
     // sets currentNode to the second to last node in the linked list
@@ -108,7 +113,30 @@ class LinkedList {
       }
     } while (currentNode.next);
 
-    // if no values are true, return false
+    // if no values are found, return null
     return null;
+  }
+
+  toString() {
+    // checks list length
+    if (this.size === 0) {
+      return;
+    }
+
+    let currentNode = this.head;
+    let string;
+
+    // adds head to string
+    string = `( ${this.head.value} )`;
+
+    // loops through the rest of the list
+    do {
+      currentNode = currentNode.next;
+      string += ` -> ( ${currentNode.value} )`;
+    } while (currentNode.next);
+
+    string += ' -> null';
+
+    return string;
   }
 }
