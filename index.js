@@ -12,12 +12,15 @@ class LinkedList {
   }
 
   append(value) {
-    let currentNode = this.head;
     const node = new Node(value);
 
+    let currentNode = this.head;
+
+    // if the linked list is empty, set its first element to the created node
     if (!this.head) {
       this.head = node;
     } else {
+      // sets currentNode to the last node in the linked list
       while (currentNode.next) {
         currentNode = currentNode.next;
       }
@@ -31,9 +34,11 @@ class LinkedList {
   prepend(value) {
     const node = new Node(value);
 
+    // if the linked list is empty, set its first element to the created node
     if (!this.head) {
       this.head = node;
     } else {
+      // sets the node's next value to contain the whole linked list, then replaces the linked list with the current node
       node.next = this.head;
       this.head = node;
     }
@@ -43,6 +48,8 @@ class LinkedList {
 
   at(index) {
     let currentNode = this.head;
+
+    // loops to the node at index and returns it
     for (let i = 0; i < index; i++) {
       currentNode = currentNode.next;
     }
