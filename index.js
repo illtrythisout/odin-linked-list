@@ -51,6 +51,10 @@ class LinkedList {
   }
 
   at(index) {
+    if (index < 0 || index >= this.size) {
+      throw new Error('Index out of bounds');
+    }
+
     let currentNode = this.head;
 
     // loops to the node at index and returns it
@@ -93,12 +97,12 @@ class LinkedList {
     }
 
     // loops through the rest of the list
-    do {
-      currentNode = currentNode.next;
+    while (currentNode) {
       if (currentNode.value === value) {
         return true;
       }
-    } while (currentNode.next);
+      currentNode = currentNode.next;
+    }
 
     // if no values are true, return false
     return false;
@@ -129,7 +133,7 @@ class LinkedList {
   toString() {
     // checks list length
     if (this.size === 0) {
-      return;
+      return '';
     }
 
     let currentNode = this.head;
